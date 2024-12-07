@@ -36,17 +36,7 @@ class Product(BaseModel):
 
     picture=models.ImageField(upload_to="product_images",null=True,blank=True)
 
-
-
     Varieties_object=models.ForeignKey(Varieties,on_delete=models.CASCADE,default=None)
-
-    # category_object=models.ForeignKey(Category,on_delete=models.CASCADE)
-
-    # size_objects=models.ManyToManyField(Size)
-
-    # tag_objects=models.ManyToManyField(Tag)
-
-    # color=models.CharField(max_length=200)
 
 
     def __str__(self):
@@ -62,8 +52,6 @@ class BasketItem(BaseModel):
     product_object=models.ForeignKey(Product,on_delete=models.CASCADE)
 
     quantity=models.PositiveIntegerField(default=1)
-
-    # size_object=models.ForeignKey(Size,on_delete=models.CASCADE)
 
     is_order_placed=models.BooleanField(default=False)
 

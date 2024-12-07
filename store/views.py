@@ -166,7 +166,11 @@ class PlaceOrderView(View):
 
         qs=request.user.cart.cart_item.filter(is_order_placed=False)
 
-        return render(request,self.template_name,{"form":form_instance, "items":qs})
+        basket_item=BasketItem.objects.filter(basket_object=request.user.cart,is_order_placed=False)
+
+        Basket_total=sum([bi.item_total for bi in qs])
+
+        return render(request,self.template_name,{"form":form_instance, "items":qs , "basket_total":Basket_total})
 
     def post(self,request,*args,**kwargs):
 
